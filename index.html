@@ -4,11 +4,36 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
 </head>
 
 <body>
+  <main>
+    <div class="main-board">
+      <h1 class="board-title">
+        Rock
+        <br />
+        Paper
+        <br />
+        Scissors
+      </h1>
+
+      <div class="score-board">
+        <h1>Score</h1>
+        <h1 id="score"></h1>
+      </div>
+    </div>
+
+    <div class="game">
+      <div class="game-container">
+        <img src="/images/icon-paper.svg" alt="" class="paper" id="paper">
+        <img src="/images/icon-scissors.svg" alt="" class="scissors" id="scissors">
+        <img src="/images/icon-rock.svg" alt="" class="rock" id="rock">
+      </div>
+    </div>
+  </main>
 
   <script type="module" src="/main.js"></script>
 </body>
