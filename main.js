@@ -4,7 +4,7 @@ const paper = document.querySelector('#paper')
 const scissors = document.querySelector('#scissors')
 let gameContainer = document.querySelector('.game-container')
 const computerChoice = document.querySelector('.computer-pick')
-const userPick = document.querySelector('.user-pick')
+const userChoice = document.querySelector('.user-pick')
 const showGameWinner = document.querySelector('.winner')
 const playAgain = document.querySelector('.play-again')
 const game = document.querySelector('.game')
@@ -24,7 +24,7 @@ const runGame = (e) => {
   const gameDecision = document.querySelector('.game-decision')
   // const userPick = document.querySelector('.user-pick')
   let computerPick = computerOptions[Math.floor(Math.random() * computerOptions.length)].cloneNode(true)
-  const userChoice = e.target.cloneNode(true)
+  const userPick = e.target.cloneNode(true)
 
 
 
@@ -37,12 +37,12 @@ const runGame = (e) => {
 
   
   computerPick.style.position = 'unset'
-  e.target.style.position = 'unset'
+  userPick.style.position = 'unset'
   showGameWinner.app
 
   computerChoice.appendChild(computerPick)
 
-  userPick.appendChild(e.target)
+  userChoice.appendChild(userPick)
 
   game.classList.add('hide')
 
@@ -66,8 +66,8 @@ const restartGame = () => {
 
   showGameWinner.classList.remove('show')
 
-  // computerChoice.removeChild(child)
-  // userPick.removeChild(child)
+  computerChoice.removeChild(computerChoice.firstChild)
+  userChoice.removeChild(userChoice.firstChild)
 }
 
 // const createComputerChoice = () => {
