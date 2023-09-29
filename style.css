@@ -73,6 +73,17 @@ main {
 }
 
 
+.winner {
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.game-decision {
+  display: flex;
+  gap: 4rem;
+}
+
 .paper {
   position: absolute;
   top: -2rem;
@@ -104,4 +115,35 @@ main {
   border: 10px solid var(--Rock-Gradient);
   border-radius: 50%;
   cursor: pointer;
+}
+
+.play-again {
+  text-transform: uppercase;
+  padding: .5rem 1rem;
+  background-color: #fff;
+  color: inherit;
+  border: 1px solid #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 15px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+  overflow: hidden;
+}
+
+.rules {
+  text-transform: uppercase;
+  padding: .5rem 1rem;
+  background-color: inherit;
+  color: #fff;
+  border: 1px solid #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 15px;
 }
