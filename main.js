@@ -2,9 +2,10 @@
 const rock = document.querySelector('#rock')
 const paper = document.querySelector('#paper')
 const scissors = document.querySelector('#scissors')
-let gameContainer = document.querySelector('.game-container')
-const computerChoice = document.querySelector('.computer-pick')
+const gameContainer = document.querySelector('.game-container')
 const userChoice = document.querySelector('.user-pick')
+const computerChoice = document.querySelector('.computer-pick')
+const winner = document.querySelector('.game-winner')
 const showGameWinner = document.querySelector('.winner')
 const playAgain = document.querySelector('.play-again')
 const game = document.querySelector('.game')
@@ -20,25 +21,19 @@ let trackScore = 0
 score.innerHTML = `${trackScore}`
 
 const runGame = (e) => {
-  // const computerChoice = document.querySelector('.computer-pick')
+
   const gameDecision = document.querySelector('.game-decision')
-  // const userPick = document.querySelector('.user-pick')
   let computerPick = computerOptions[Math.floor(Math.random() * computerOptions.length)].cloneNode(true)
   const userPick = e.target.cloneNode(true)
 
 
-
   console.log({
-    user: userChoice,
+    user: userPick,
     computer: computerPick
   })
-
-  trackScore += 1
-
   
   computerPick.style.position = 'unset'
   userPick.style.position = 'unset'
-  showGameWinner.app
 
   computerChoice.appendChild(computerPick)
 
@@ -50,11 +45,56 @@ const runGame = (e) => {
 
   showGameWinner.classList.add('show')
 
-  score.innerHTML = `${trackScore}`
+  decideWinner(userPick, computerPick)
+
 
 }
 
-const decideWinner = (house, yourPick) => {
+const decideWinner = (user, computer) => {
+
+  const decision = document.createElement('h1')
+  
+  if(user.src === computer.src) {
+    decision.innerHTML = 'Tie Game'
+  }
+
+  if(user.id === 'paper' && computer.id === 'rock') {
+    trackScore += 1
+    score.innerHTML = `${trackScore}`
+    decision.innerHTML = 'You win!'
+  }
+
+  if(user.id === 'rock' && computer.id === 'paper') {
+    trackScore -= 1
+    score.innerHTML = `${trackScore}`
+    decision.innerHTML = 'Computer win :('
+  }
+
+  if(user.id === 'scissors' && computer.id === 'rock') {
+    trackScore -= 1
+    score.innerHTML = `${trackScore}`
+    decision.innerHTML = 'Computer win :('
+  }
+
+  if(user.id === 'rock' && computer.id === 'scissors') {
+    trackScore += 1
+    score.innerHTML = `${trackScore}`
+    decision.innerHTML = 'You win!'
+  }
+
+  if(user.id === 'paper' && computer.id === 'scissors') {
+    trackScore -= 1
+    score.innerHTML = `${trackScore}`
+    decision.innerHTML = 'Computer win :('
+  }
+
+  if(user.id === 'scissors' && computer.id === 'paper') {
+    trackScore += 1
+    score.innerHTML = `${trackScore}`
+    decision.innerHTML = 'You win!'
+  }
+
+  winner.appendChild(decision)
 
 }
 
@@ -68,20 +108,8 @@ const restartGame = () => {
 
   computerChoice.removeChild(computerChoice.firstChild)
   userChoice.removeChild(userChoice.firstChild)
+  winner.removeChild(winner.firstChild)
 }
-
-// const createComputerChoice = () => {
-//   let computerPick = computerOptions[Math.floor(Math.random() * computerOptions.length)]
-//   const computerChoice = document.querySelector('.computer-pick')
-
-//   const computerImg = document.createElement('img')
-//   computerImg.src = computerPick
-
-// }
-
-
-// gameContainer.forEach(el => console.log('Game container element', el))
-
 
 
 rock.addEventListener('click', (e) => runGame(e))
